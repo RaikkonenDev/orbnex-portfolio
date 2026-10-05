@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orbnex — Portfólio</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#07050d;--bg2:#100b1c;--tx:#f3effb;--mu:#a79fbd;--ac:#8b5cf6;--ac2:#c4a7ff;--bd:#2a2140;}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#faf8ff;--bg2:#efeafc;--tx:#160f2a;--mu:#5f5578;--ac:#6d3df0;--ac2:#4c1fc4;--bd:#d9d0f2;}}
+:root[data-theme="light"]{--bg:#faf8ff;--bg2:#efeafc;--tx:#160f2a;--mu:#5f5578;--ac:#6d3df0;--ac2:#4c1fc4;--bd:#d9d0f2;}
+:root[data-theme="dark"]{--bg:#07050d;--bg2:#100b1c;--tx:#f3effb;--mu:#a79fbd;--ac:#8b5cf6;--ac2:#c4a7ff;--bd:#2a2140;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.w{max-width:1100px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+.logo i{width:20px;height:20px;border-radius:50%;border:3px solid var(--ac);box-shadow:8px 0 0 -1px var(--ac2);display:inline-block;margin-right:8px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.92rem;color:var(--mu)}
+nav ul a:hover{color:var(--tx)}
+.btn{display:inline-block;padding:11px 22px;border-radius:99px;background:linear-gradient(135deg,var(--ac),#5b2fd1);color:#fff;font-weight:600;font-size:.92rem;border:0;cursor:pointer}
+.btn.o{background:none;border:1px solid var(--bd);color:var(--tx)}
+@media(max-width:760px){nav ul{display:none}}
+.hero{position:relative;overflow:hidden;padding:110px 0 120px;min-height:78vh;display:flex;align-items:center}
+.hero svg{position:absolute;inset:0;width:100%;height:100%;opacity:.75}
+.hero .w{position:relative}
+.tag{display:inline-block;font-size:.8rem;color:var(--ac2);border:1px solid var(--bd);padding:5px 14px;border-radius:99px;margin-bottom:20px}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;margin:0 0 20px;letter-spacing:-2px;max-width:720px}
+h1 span{background:linear-gradient(90deg,var(--ac2),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:520px;color:var(--mu);font-size:1.1rem;margin:0 0 30px}
+.hero .btn+.btn{margin-left:10px}
+section{padding:84px 0}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 12px;letter-spacing:-1px}
+.sub{color:var(--mu);max-width:560px;margin:0 0 44px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--bg);border:1px solid var(--bd);border-radius:18px;padding:26px;transition:.25s}
+.alt .card{background:var(--bg)}
+.card:hover{transform:translateY(-4px);border-color:var(--ac)}
+.card h3{margin:14px 0 6px;font-size:1.1rem}
+.card p{margin:0;color:var(--mu);font-size:.95rem}
+.ic{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--ac),#5b2fd1);display:grid;place-items:center;font-size:1.3rem}
+.two{display:grid;gap:44px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:center}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{border:1px solid var(--bd);border-radius:18px;padding:22px;background:var(--bg2)}
+.stat b{font-size:2rem;display:block;color:var(--ac2)}
+.stat span{color:var(--mu);font-size:.9rem}
+.proj{overflow:hidden;padding:0;display:flex;flex-direction:column;justify-content:space-between}
+.proj .th{height:150px;display:grid;place-items:center;font-weight:800;font-size:1.6rem;color:#fff}
+.proj div.b{padding:20px 24px 24px}
+.pill{font-size:.75rem;color:var(--ac2);border:1px solid var(--bd);padding:2px 10px;border-radius:99px}
+.team .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:1.3rem;color:#fff;background:linear-gradient(135deg,var(--ac),#e879f9)}
+form{display:grid;gap:14px;max-width:560px}
+input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--ac);border-color:transparent}
+.ct{display:grid;gap:44px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.ct li{list-style:none;margin-bottom:14px;color:var(--mu)}
+.ct ul{padding:0;margin-top:24px}
+#ok{display:none;color:var(--ac2)}
+footer{border-top:1px solid var(--bd);padding:28px 0;color:var(--mu);font-size:.88rem}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@keyframes up{from{opacity:0;transform:translateY(30px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.hero .w>*{animation:up .9s both cubic-bezier(.2,.7,.2,1)}
+.hero .w>:nth-child(2){animation-delay:.12s}.hero .w>:nth-child(3){animation-delay:.24s}.hero .w>:nth-child(4){animation-delay:.36s}.hero .w>:nth-child(5){animation-delay:.44s}
+#fx path{stroke-dasharray:260 340;animation:fl linear infinite}
+@keyframes fl{to{stroke-dashoffset:-600}}
+.glow{position:fixed;width:460px;height:460px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--ac) 26%,transparent),transparent 65%);transform:translate(-50%,-50%);left:-999px;top:-999px;z-index:0}
+main,footer{position:relative;z-index:1}
+.btn{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px -6px var(--ac)}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
+.btn:hover::after{left:130%;transition:left .7s}
+.ic{animation:fy 4s ease-in-out infinite}@keyframes fy{50%{transform:translateY(-6px)}}
+.tag{animation:up .9s both,pl 3s 1s infinite}@keyframes pl{50%{box-shadow:0 0 22px -4px var(--ac)}}
+section.show{padding:0 0 70px;perspective:1400px;margin-top:-30px}
+.win{border:1px solid var(--bd);border-radius:18px;background:var(--bg2);overflow:hidden;box-shadow:0 40px 120px -40px var(--ac);transition:transform .2s;position:relative}
+.wb{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--bd)}.wb i{width:11px;height:11px;border-radius:50%;background:var(--bd)}
+.wm{display:grid;grid-template-columns:160px 1fr}
+.sd{border-right:1px solid var(--bd);padding:16px;font-size:.85rem;color:var(--mu);line-height:2.1}.sd b{color:var(--tx);display:block;margin-bottom:8px}
+.tb{font-size:.82rem;font-family:ui-monospace,Menlo,monospace;overflow-x:auto;min-height:220px}
+.tr{display:grid;grid-template-columns:44px 1.3fr 1.4fr 1fr;padding:11px 16px;border-bottom:1px solid var(--bd);min-width:540px}
+.tr.h{color:var(--mu)}
+.tr:not(.h){opacity:0;transform:translateX(-16px);transition:.5s}
+.tr.on{opacity:1;transform:none}.tr.on:hover{background:color-mix(in srgb,var(--ac) 14%,transparent)}
+.st{color:#34d399}.st::before{content:"● "}
+.toast{position:absolute;top:58px;right:16px;background:var(--bg);border:1px solid var(--bd);padding:12px 16px;border-radius:12px;font-size:.85rem;transform:translateY(-20px) scale(.95);opacity:0;transition:.5s cubic-bezier(.3,1.4,.5,1);box-shadow:0 10px 40px -10px #000}
+.toast.on{opacity:1;transform:none}
+.cur{position:absolute;left:70%;top:80%;transition:all 1.6s cubic-bezier(.6,0,.3,1);font-size:1.4rem;pointer-events:none;opacity:0}
+.mq{overflow:hidden;border-block:1px solid var(--bd);padding:18px 0;color:var(--mu);white-space:nowrap}
+.mq div{display:inline-block;animation:mq 32s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+.mq span{margin:0 28px;font-weight:600}.mq span::before{content:"✦ ";color:var(--ac)}
+@media(max-width:700px){.wm{grid-template-columns:1fr}.sd{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.tr:not(.h){opacity:1;transform:none}}
+
+.glow{left:0;top:0}.pg{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),#e879f9);transform-origin:0 50%;transform:scaleX(0);z-index:30}
+nav ul{gap:18px}nav ul a{position:relative;transition:color .3s}nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--ac);transform:scaleX(0);transition:transform .4s cubic-bezier(.2,.7,.2,1)}nav ul a.act{color:var(--tx)}nav ul a.act::after{transform:scaleX(1)}
+#rw{display:inline-block;transition:opacity .45s,transform .45s,filter .45s}#rw.o{opacity:0;transform:translateY(14px);filter:blur(8px)}
+.card{position:relative;overflow:hidden}.card::before{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--ac) 22%,transparent),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}.card:hover::before{opacity:1}
+.n{font-size:2.2rem;font-weight:800;background:linear-gradient(90deg,var(--ac2),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.win{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.tabs{border-right:1px solid var(--bd);padding:14px 10px;display:flex;flex-direction:column;gap:4px;position:relative}
+.tabs b{padding:4px 12px 12px;font-size:.85rem}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;padding:10px 12px;border-radius:10px;color:var(--mu);font-size:.86rem;position:relative;z-index:1;transition:color .3s}
+.tab:hover,.tab.on{color:var(--tx)}
+.pb{position:absolute;left:10px;right:10px;top:0;height:38px;border-radius:10px;background:color-mix(in srgb,var(--ac) 22%,transparent);border:1px solid color-mix(in srgb,var(--ac) 55%,transparent);transition:transform .55s cubic-bezier(.3,1.2,.4,1),height .3s}
+.tbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--bd);font-size:.85rem;font-weight:600}
+.tbar .btn{padding:6px 14px;font-size:.78rem}
+.cur{z-index:3}
+</style>
+</head>
+<body>
+<header><div class="w"><nav>
+<a href="#inicio" class="logo"><i></i>orbnex</a>
+<ul><li><a href="#inicio">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#processo">Processo</a></li><li><a href="#quem">Quem somos</a></li><li><a href="#contato">Contato</a></li></ul>
+<a href="#contato" class="btn">Fale conosco</a>
+</nav></div></header>
+
+<main>
+<section class="hero" id="inicio">
+<svg id="fx" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+<div class="w">
+<span class="tag">✦ Tecnologia que orbita o seu negócio</span>
+<h1>Soluções digitais para <span id="rw">ir mais longe</span></h1>
+<p>A Orbnex cria sites, aplicativos e sistemas sob medida que transformam ideias em produtos reais e negócios em referências.</p>
+<a href="#projetos" class="btn">Ver projetos</a><a href="#contato" class="btn o">Solicitar orçamento</a>
+</div>
+</section>
+
+<!-- CONSOLE DE PROJETOS -->
+<section class="show"><div class="w"><div class="win" id="win"><div class="wb"><i></i><i></i><i></i></div>
+<div class="wm"><div class="tabs" id="tabs"><b>Console de Projetos</b><i class="pb" id="pb"></i><button class="tab on">▦ Projetos</button><button class="tab">◈ Módulos</button><button class="tab">✦ Deploys</button></div><div style="min-width:0"><div class="tbar"><span id="tt">projetos</span><span class="btn">+ Inserir</span></div><div class="tb" id="tb"></div></div></div><div class="toast" id="ts"></div><div class="cur" id="cu">🖱️</div></div></div></section>
+<div class="mq"><div id="mq"></div></div>
+
+<section id="sobre" class="alt"><div class="w two">
+<div><h2>Sobre a Orbnex</h2>
+<p class="sub" style="margin-bottom:16px">Nascemos com a missão de tornar a tecnologia simples, bonita e útil. Unimos design, engenharia e estratégia para entregar resultados mensuráveis.</p>
+<p class="sub" style="margin:0"><b style="color:var(--tx)">Missão:</b> impulsionar empresas com soluções digitais de alto impacto.<br><b style="color:var(--tx)">Valores:</b> transparência, qualidade, inovação e parceria.</p></div>
+<div class="stats">
+<div class="stat"><b>120+</b><span>Projetos entregues</span></div>
+<div class="stat"><b>60+</b><span>Clientes atendidos</span></div>
+<div class="stat"><b>8</b><span>Anos de mercado</span></div>
+<div class="stat"><b>98%</b><span>Clientes satisfeitos</span></div>
+</div></div></section>
+
+<section id="servicos"><div class="w">
+<h2>Nossos serviços</h2><p class="sub">Tudo o que você precisa para criar, lançar e escalar seu produto digital.</p>
+<div class="grid">
+<div class="card"><div class="ic">🌐</div><h3>Sites e Landing Pages</h3><p>Design moderno, rápido e otimizado para converter visitantes em clientes.</p></div>
+<div class="card"><div class="ic">📱</div><h3>Aplicativos</h3><p>Apps mobile e web com experiência fluida e código escalável.</p></div>
+<div class="card"><div class="ic">⚙️</div><h3>Sistemas sob medida</h3><p>Automatize processos com plataformas feitas para a sua operação.</p></div>
+<div class="card"><div class="ic">🎨</div><h3>Design e Branding</h3><p>Identidade visual e interfaces que contam a história da sua marca.</p></div>
+</div></div></section>
+
+<!-- SEÇÃO DE PROJETOS -->
+<section id="projetos" class="alt"><div class="w">
+<h2>Projetos</h2><p class="sub">Trabalhos em destaque desenvolvidos pela nossa equipe.</p>
+<div class="grid">
+<div class="card proj">
+  <div class="th" style="background:linear-gradient(135deg,#e63227,#111111)">Kokoro</div>
+  <div class="b">
+    <span class="pill">Landing Page / Design</span>
+    <h3>Kokoro Anime</h3>
+    <p>Oficina de Personagens Anime com design estilo mangá/nanquim, interativo e responsivo.</p>
+    <a href="kokoro.html" target="_blank" class="btn o" style="margin-top:16px; width:100%; text-align:center; box-sizing:border-box;">Acessar Projeto</a>
+  </div>
+</div>
+<div class="card proj">
+  <div class="th" style="background:linear-gradient(135deg,#ff8a00,#ff3d81)">Rota</div>
+  <div class="b">
+    <span class="pill">Plataforma Web</span>
+    <h3>Rota Mentoria</h3>
+    <p>Plataforma para mentorias de carreira com fluxo intuitivo de agendamento e depoimentos.</p>
+    <a href="rota.html" target="_blank" class="btn o" style="margin-top:16px; width:100%; text-align:center; box-sizing:border-box;">Acessar Projeto</a>
+  </div>
+</div>
+<div class="card proj">
+  <div class="th" style="background:linear-gradient(135deg,#8b5cf6,#5b2fd1)">VPN Client</div>
+  <div class="b">
+    <span class="pill">Desktop / Automação</span>
+    <h3>Orbnex VPN Client</h3>
+    <p>Solução desktop desenvolvida para gestão otimizada de conexões VPN corporativas, com automação em PowerShell e integração de dados via Python.</p>
+    <a href="vpn.html" target="_blank" class="btn o" style="margin-top:16px; width:100%; text-align:center; box-sizing:border-box;">Ver Detalhes</a>
+  </div>
+</div>
+</div></div></section>
+
+<section id="processo"><div class="w"><h2>Como trabalhamos</h2><p class="sub">Um processo simples, transparente e sem surpresas.</p>
+<div class="grid"><div class="card"><span class="n">01</span><h3>Descoberta</h3><p>Entendemos seus objetivos, público e desafios.</p></div>
+<div class="card"><span class="n">02</span><h3>Design</h3><p>Protótipos e identidade validados com você.</p></div>
+<div class="card"><span class="n">03</span><h3>Desenvolvimento</h3><p>Código limpo, entregas semanais e testes.</p></div>
+<div class="card"><span class="n">04</span><h3>Lançamento</h3><p>Deploy, monitoramento e evolução contínua.</p></div></div></div></section>
+
+<!-- SEÇÃO QUEM SOMOS -->
+<section id="quem"><div class="w">
+<h2>Quem somos</h2><p class="sub">Especialistas focados no desenvolvimento de soluções sob medida.</p>
+<div class="grid team" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+<div class="card"><div class="av">A</div><h3>André Raikkonen</h3><p>Desenvolvedor</p></div>
+<div class="card"><div class="av">V</div><h3>Victor</h3><p>Desenvolvedor</p></div>
+</div></div></section>
+
+<!-- SEÇÃO CONTATO -->
+<section id="contato" class="alt"><div class="w ct">
+<div><h2>Contato</h2><p class="sub" style="margin-bottom:0">Conte sobre o seu projeto e responderemos em breve.</p>
+<ul>
+  <li>📧 orbnext20@gmail.com</li>
+  <li>📞 +55 (61) 90000-0000</li>
+  <li>📍 Brasília, DF — Brasil</li>
+</ul></div>
+<form id="f"><input required placeholder="Seu nome"><input required type="email" placeholder="Seu e-mail"><textarea required rows="5" placeholder="Fale sobre o seu projeto"></textarea>
+<button class="btn" type="submit">Enviar mensagem</button><p id="ok">✓ Mensagem enviada! Entraremos em contato em breve.</p></form>
+</div></section>
+</main>
+
+<footer><div class="w"><span>© 2026 Orbnex. Todos os direitos reservados.</span><span>Feito com ✦ em Brasília</span></div></footer>
+
+<script>
+(function(){var s=document.getElementById('fx'),h='<defs><linearGradient id="g" x1="1" x2="0"><stop offset="0" stop-color="#c4a7ff" stop-opacity="0"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e9d5ff" stop-opacity=".9"/></linearGradient></defs>';
+for(var i=0;i<38;i++){var y=(i-19)*20;h+='<path d="M1000 '+(300+y*.15)+' C 750 '+(300+y*.2)+', 500 '+(300+y*2.2)+', -50 '+(300+y*5)+'" fill="none" stroke="url(#g)" stroke-width="'+(.6+Math.random()*1.4)+'" opacity="'+(.3+Math.random()*.7)+'"/>'}
+s.innerHTML=h;
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').style.display='block';this.reset()})})();
+</script>
+<script>
+(function(){
+/* ✏️ DADOS APENAS DOS 3 PROJETOS NO PAINEL */
+var PALAVRAS=['ir mais longe','vender mais','crescer rápido','se destacar'];
+var DADOS=[
+{n:'projetos',s:1,c:['id','criado em','projeto','status'],t:'✓ 3 projetos ativos',r:[
+  ['1','29/09 13:28','Kokoro Anime App','online'],
+  ['2','29/09 13:28','Rota Mentoria Web','online'],
+  ['3','29/09 13:28','Orbnex VPN Client','online']
+]},
+{n:'módulos',c:['id','módulo','tecnologia','status'],t:'✓ 3 módulos integrados',r:[
+  ['1','Autenticação Supabase','PostgreSQL','Ativo'],
+  ['2','Engine de Animação','Canvas / WebGL','Ativo'],
+  ['3','Integração VPN','PowerShell Core','Ativo']
+]},
+{n:'deploys',s:1,c:['id','projeto','versão','status'],t:'✓ Deploy concluído em 32s',r:[
+  ['1','Kokoro Anime','v2.1.0','concluído'],
+  ['2','Rota Mentoria','v1.4.2','concluído'],
+  ['3','Orbnex VPN Client','v3.0.0','concluído']
+]}];
+
+var $=function(s){return document.querySelector(s)},A=function(s){return [].slice.call(document.querySelectorAll(s))};
+A('#fx path').forEach(function(p){p.style.animationDuration=(4+Math.random()*5)+'s';p.style.animationDelay=(-Math.random()*6)+'s'});
+var g=document.createElement('div');g.className='glow';document.body.appendChild(g);
+var pg=document.createElement('div');pg.className='pg';document.body.appendChild(pg);
+var gx=0,gy=0,tx=0,ty=0,fx=$('#fx');
+addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY});
+(function l(){gx+=(tx-gx)*.1;gy+=(ty-gy)*.1;g.style.transform='translate('+(gx-230)+'px,'+(gy-230)+'px)';requestAnimationFrame(l)})();
+addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;pg.style.transform='scaleX('+(scrollY/m)+')';fx.style.transform='translateY('+scrollY*.2+'px)'},{passive:true});
+var links=A('nav ul a'),so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')=='#'+e.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
+A('main section[id]').forEach(function(x){so.observe(x)});
+A('section:not(.hero):not(.show) :is(h2,.sub,.card,.stat)').forEach(function(el){el.classList.add('rv');var i=[].indexOf.call(el.parentNode.children,el);el.style.transitionDelay=(i%4*90)+'ms'});
+function count(b){var t=b.textContent,n=parseInt(t),s=t.replace(/[0-9]/g,''),st=performance.now();(function f(now){var k=Math.min((now-st)/1400,1);b.textContent=Math.round(n*(1-Math.pow(1-k,3)))+s;if(k<1)requestAnimationFrame(f)})(st)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var b=e.target.querySelector('b');if(e.target.classList.contains('stat')&&b)count(b);io.unobserve(e.target)}})},{threshold:.15});
+A('.rv').forEach(function(el){io.observe(el)});
+A('.card').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')})});
+var rw=$('#rw'),wi=0;setInterval(function(){rw.classList.add('o');setTimeout(function(){wi=(wi+1)%PALAVRAS.length;rw.textContent=PALAVRAS[wi];rw.classList.remove('o')},450)},2800);
+var tabs=A('.tab'),pb=$('#pb'),tb=$('#tb'),ts=$('#ts'),cu=$('#cu'),w=$('#win'),cur=0,T=[],auto;
+function sel(i){cur=i;tabs.forEach(function(t,k){t.classList.toggle('on',k==i)});pb.style.transform='translateY('+tabs[i].offsetTop+'px)';pb.style.height=tabs[i].offsetHeight+'px';var d=DADOS[i];$('#tt').textContent=d.n;T.forEach(clearTimeout);T=[];ts.classList.remove('on');
+tb.innerHTML='<div class="tr h">'+d.c.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>';
+d.r.forEach(function(r,k){var e=document.createElement('div');e.className='tr';e.innerHTML=r.map(function(x,j){return '<span'+(j==3&&d.s?' class="st"':'')+'>'+x+'</span>'}).join('');tb.appendChild(e);T.push(setTimeout(function(){e.classList.add('on')},150+k*120))});
+T.push(setTimeout(function(){ts.textContent=d.t;ts.classList.add('on')},300+d.r.length*120));T.push(setTimeout(function(){ts.classList.remove('on')},3800))}
+function go(i){var a=tabs[i].getBoundingClientRect(),b=w.getBoundingClientRect();cu.style.opacity=1;cu.style.left=(a.left-b.left+50)+'px';cu.style.top=(a.top-b.top+14)+'px'}
+function next(){var n=(cur+1)%DADOS.length;go(n);setTimeout(function(){sel(n);setTimeout(function(){cu.style.opacity=0},500)},1300)}
+function start(){clearInterval(auto);auto=setInterval(next,6500)}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){cu.style.opacity=0;sel(i);start()})});
+sel(0);
+new IntersectionObserver(function(es){if(es[0].isIntersecting){sel(cur);start()}else clearInterval(auto)},{threshold:.3}).observe(w);
+w.addEventListener('mousemove',function(e){var r=w.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;w.style.transform='rotateX('+(-y*5)+'deg) rotateY('+(x*7)+'deg)'});
+w.addEventListener('mouseleave',function(){w.style.transform=''});
+var t=['React','Next.js','Node.js','TypeScript','Flutter','PostgreSQL','Figma','AWS','Docker','Supabase','Tailwind','Python'],h='';for(var k=0;k<2;k++)t.forEach(function(x){h+='<span>'+x+'</span>'});$('#mq').innerHTML=h;
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').style.display='block';this.reset()});
+})();
+</script>
+</body>
+</html>

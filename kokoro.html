@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kokoro — Oficina de Personagens Anime</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--paper:#f4f1ea;--card:#fffdf8;--ink:#111;--red:#e63227;--mu:#5d5a54;--dot:rgba(0,0,0,.07);--hd:"Archivo Black","Arial Black",Impact,sans-serif;--jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#141414;--card:#1c1c1c;--ink:#f4f1ea;--mu:#b5b0a5;--dot:rgba(255,255,255,.07)}}
+:root[data-theme="dark"]{--paper:#141414;--card:#1c1c1c;--ink:#f4f1ea;--mu:#b5b0a5;--dot:rgba(255,255,255,.07)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--paper) radial-gradient(var(--dot) 1px,transparent 1.2px) 0 0/7px 7px;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1160px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:3px solid var(--ink)}
+nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--hd);font-size:1.25rem;letter-spacing:.5px}
+.logo i{width:30px;height:30px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font:900 .85rem var(--jp);font-style:normal;animation:sp 14s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+nav ul a{position:relative;padding:4px 0}nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+nav ul a:hover::after,nav ul a.act::after{transform:scaleX(1)}
+.btn{display:inline-block;padding:13px 26px;border:3px solid var(--ink);background:var(--red);color:#fff;font-family:var(--hd);font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:5px 5px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.o{background:var(--paper);color:var(--ink)}
+@media(max-width:900px){nav ul{display:none}}
+.hero{position:relative;padding:64px 0 70px}
+.hg{display:grid;gap:36px;grid-template-columns:1.05fr 1fr;align-items:center}
+@media(max-width:920px){.hg{grid-template-columns:1fr}}
+.tx{position:relative}
+.circ{position:absolute;left:-34px;top:-26px;width:130px;height:130px;border-radius:50%;background:var(--red);animation:pop .9s both cubic-bezier(.3,1.5,.5,1)}
+.ey{position:relative;font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 14px}
+h1{position:relative;font-family:var(--hd);font-size:clamp(2.3rem,6.2vw,4.7rem);line-height:.98;margin:0 0 26px;text-transform:uppercase;letter-spacing:-.5px}
+.ln{display:block;overflow:hidden;padding-bottom:4px}.ln>span{display:inline-block;animation:rise 1s both cubic-bezier(.2,.8,.2,1)}
+.ln:nth-child(2)>span{animation-delay:.12s}.ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+.rd{color:var(--red)}
+.box{position:relative;display:inline-block;border:3px solid var(--ink);padding:12px 20px;font-weight:600;margin-bottom:28px;background:var(--paper);animation:up .8s .5s both}
+.cta{display:flex;gap:16px;flex-wrap:wrap;animation:up .8s .65s both}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.vt{position:absolute;left:-6px;top:150px;writing-mode:vertical-rl;border:2px solid var(--ink);padding:10px 5px;font:900 .8rem var(--jp);letter-spacing:.3em;background:var(--paper);display:none}
+@media(min-width:1260px){.vt{display:block;left:-48px}}
+.pn{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.15fr 1fr;gap:10px;height:500px}
+.p{position:relative;border:4px solid var(--ink);overflow:hidden;background:var(--ink);animation:slice .9s both cubic-bezier(.7,0,.2,1);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.p svg{position:absolute;inset:0;width:100%;height:100%}
+.p:hover{transform:scale(1.03) rotate(-1deg);z-index:2}
+.p1{grid-column:1/3}.p2{animation-delay:.2s}.p3{animation-delay:.4s}
+@keyframes slice{from{clip-path:polygon(0 0,0 0,0 100%,0 100%)}to{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:bl 5s infinite}.p2 .eye{animation-delay:-2s}.p3 .eye{animation-delay:-3.4s}
+@keyframes bl{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.sfx{position:absolute;right:-10px;bottom:-26px;z-index:5;font:900 3.2rem var(--jp);color:var(--red);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;transform:rotate(-9deg);animation:sf 1.2s 1.3s both cubic-bezier(.3,1.8,.5,1)}
+@keyframes sf{from{opacity:0;transform:scale(2.4) rotate(-20deg)}to{opacity:1;transform:rotate(-9deg)}}
+.hint{font-size:.72rem;color:var(--mu);margin-top:12px;text-align:center}
+@media(max-width:560px){.pn{height:400px}.sfx{font-size:2.2rem}}
+.mq{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:14px 0;transform:rotate(-1.4deg);margin:10px -20px 0;border-block:3px solid var(--red)}
+.mq div{display:inline-block;animation:mq 28s linear infinite;font-family:var(--hd);font-size:1.1rem}@keyframes mq{to{transform:translateX(-50%)}}
+.mq span{margin:0 22px}.mq span:nth-child(3n){color:var(--red)}
+section.s{padding:88px 0}
+.hl{display:inline-block;background:var(--red);color:#fff;padding:0 12px;transform:rotate(-1deg)}
+h2{font-family:var(--hd);font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.05;margin:0 0 14px;text-transform:uppercase}
+.sub{color:var(--mu);max-width:580px;margin:0 0 44px;font-size:1.05rem}
+.two{display:grid;gap:44px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:center}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mc{background:var(--card);border:3px solid var(--ink);padding:24px;box-shadow:6px 6px 0 var(--ink);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.mc:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 var(--red)}
+.mc::after{content:"";position:absolute;right:-20px;top:-20px;width:90px;height:90px;background:radial-gradient(var(--ink) 1.5px,transparent 2px) 0 0/8px 8px;opacity:.18;border-radius:50%}
+.st b{font-family:var(--hd);font-size:2.4rem;display:block;color:var(--red);line-height:1.1}.st span{font-size:.9rem;color:var(--mu)}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.mc .n{font-family:var(--hd);font-size:3.2rem;line-height:1;color:transparent;-webkit-text-stroke:2px var(--ink)}
+.mc h3{font-family:var(--hd);font-size:1.1rem;margin:10px 0 8px;text-transform:uppercase}.mc p{margin:0;color:var(--mu);font-size:.95rem}
+.mc .jp{position:absolute;right:16px;bottom:8px;font:900 2.2rem var(--jp);color:var(--red);opacity:.9}
+.ink{background:var(--ink);color:var(--paper)}.ink .sub{color:var(--paper);opacity:.7}.ink .mc{background:var(--paper);color:var(--ink);border-color:var(--paper);box-shadow:6px 6px 0 var(--red)}
+.ink .mc p{color:#5d5a54}
+.av{width:68px;height:68px;border-radius:50%;background:var(--red);border:3px solid var(--ink);display:grid;place-items:center;color:#fff;font:900 1.4rem var(--jp)}
+.faq{max-width:760px;display:grid;gap:14px}
+details{background:var(--card);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+summary{cursor:pointer;list-style:none;padding:16px 20px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";font:900 1.5rem var(--hd);color:var(--red);transition:transform .3s}
+details[open] summary::after{transform:rotate(135deg)}
+details p{margin:0;padding:0 20px 18px;color:var(--mu);animation:up .4s both}
+.tk{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
+.tc{background:var(--red);color:#fff;border:3px solid var(--ink);padding:28px;box-shadow:8px 8px 0 var(--ink);position:relative}
+.tc h3{font-family:var(--hd);font-size:1.6rem;margin:0 0 6px;text-transform:uppercase;line-height:1.1}.tc p{margin:0 0 16px}
+.bar{height:20px;border:3px solid var(--ink);background:var(--paper);overflow:hidden}.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--ink) 0 6px,#444 6px 12px);transition:width 1.6s cubic-bezier(.2,.8,.2,1) .3s}.bar.in i{width:60%}
+form{display:grid;gap:14px}
+input,select{width:100%;padding:14px 16px;border:3px solid var(--ink);background:var(--card);color:var(--ink);font:inherit;border-radius:0}
+input:focus,select:focus{outline:0;box-shadow:5px 5px 0 var(--red)}
+#ok{display:none;font-weight:800;margin:0}
+footer{border-top:3px solid var(--ink);padding:28px 0;font-size:.88rem;color:var(--mu)}footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rv{opacity:0;transform:translateY(30px) rotate(.6deg);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar i{width:60%}}
+</style>
+</head>
+<body>
+<header><div class="w"><nav>
+<a href="#inicio" class="logo"><i>心</i>KOKORO</a>
+<ul><li><a href="#inicio">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#programa">Programa</a></li><li><a href="#mestres">Mestres</a></li><li><a href="#duvidas">Dúvidas</a></li><li><a href="#inscricao">Inscrição</a></li></ul>
+<a href="#inscricao" class="btn" style="padding:9px 18px;font-size:.78rem">Inscrever-se</a>
+</nav></div></header>
+
+<main>
+<section class="hero" id="inicio"><div class="w"><div class="hg">
+<div class="tx"><span class="vt">こころ</span><div class="circ"></div>
+<p class="ey">Oficina · Turma 07 · 2026</p>
+<h1><span class="ln"><span>Oficina de</span></span><span class="ln"><span>Personagens</span></span><span class="ln"><span class="rd">Anime</span><span>.</span></span></h1>
+<div class="box">Aqui é onde a sua história começa.</div>
+<div class="cta"><a href="#inscricao" class="btn">Quero me inscrever</a><a href="#programa" class="btn o">Ver programa</a></div>
+</div>
+<div><div class="pn" id="pn">
+<div class="p p1"><svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><pattern id="ht" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#111"/></pattern><clipPath id="ec"><path d="M10 120Q100 40 190 120Q100 190 10 120Z"/></clipPath><clipPath id="e3"><ellipse cx="100" cy="150" rx="40" ry="15"/></clipPath></defs>
+<rect width="400" height="240" fill="#e63227"/><rect width="400" height="240" fill="url(#ht)" opacity=".28"/>
+<path d="M120 240V110Q120 40 200 40Q280 40 280 110V240Z" fill="#f7f3ea" stroke="#111" stroke-width="4"/>
+<path d="M105 130Q90 10 200 6Q310 10 295 130L272 82L252 124L226 66L200 120L174 66L148 124L128 82Z" fill="#111"/>
+<g class="eye"><ellipse cx="160" cy="150" rx="30" ry="21" fill="#fff" stroke="#111" stroke-width="4"/><g class="pup"><circle cx="160" cy="150" r="14" fill="#111"/><circle cx="154" cy="144" r="5" fill="#fff"/></g><path d="M128 142Q160 118 192 142" stroke="#111" stroke-width="6" fill="none"/></g>
+<g class="eye"><ellipse cx="240" cy="150" rx="30" ry="21" fill="#fff" stroke="#111" stroke-width="4"/><g class="pup"><circle cx="240" cy="150" r="14" fill="#111"/><circle cx="234" cy="144" r="5" fill="#fff"/></g><path d="M208 142Q240 118 272 142" stroke="#111" stroke-width="6" fill="none"/></g>
+<path d="M128 118L186 124M214 124L272 118" stroke="#111" stroke-width="7" stroke-linecap="round"/><path d="M200 172l-6 14h10" stroke="#111" stroke-width="3" fill="none"/><path d="M180 205Q200 214 222 202" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+<div class="p p2"><svg viewBox="0 0 200 240" preserveAspectRatio="xMidYMid slice"><rect width="200" height="240" fill="#111"/><rect width="200" height="240" fill="url(#ht)" opacity=".25" style="filter:invert(1)"/>
+<path d="M10 120Q100 40 190 120Q100 190 10 120Z" fill="#fff"/><g clip-path="url(#ec)"><g class="pup"><circle cx="100" cy="118" r="44" fill="#e63227"/><circle cx="100" cy="118" r="20" fill="#111"/><circle cx="84" cy="102" r="9" fill="#fff"/><circle cx="116" cy="132" r="4" fill="#fff"/></g></g>
+<path d="M10 120Q100 40 190 120" stroke="#f7f3ea" stroke-width="7" fill="none"/><path d="M20 66Q100 14 186 58" stroke="#f7f3ea" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
+<div class="p p3"><svg viewBox="0 0 200 240" preserveAspectRatio="xMidYMid slice"><rect width="200" height="240" fill="#f7f3ea"/><g stroke="#111" stroke-width="1.5" opacity=".45"><path d="M100 150L0 120M100 150L0 160M100 150L0 200M100 150L20 240M100 150L200 110M100 150L200 170M100 150L200 215M100 150L170 240"/></g>
+<circle cx="158" cy="196" r="28" fill="#e63227"/><path d="M0 0H200V90L170 60L160 112L130 50L110 100L80 40L60 100L30 60L20 112L0 80Z" fill="#111"/>
+<ellipse cx="100" cy="150" rx="40" ry="15" fill="#fff" stroke="#111" stroke-width="4"/><g class="eye"><g clip-path="url(#e3)"><g class="pup"><circle cx="100" cy="150" r="17" fill="#e63227"/><circle cx="100" cy="150" r="8" fill="#111"/><circle cx="94" cy="145" r="4" fill="#fff"/></g></g><path d="M58 146Q100 124 142 146" stroke="#111" stroke-width="6" fill="none"/></g></svg></div>
+<div class="sfx">ドンッ!</div></div>
+<p class="hint ">@kokoro</p></div>
+</div></div>
+<div class="mq"><div id="mq"></div></div>
+</section>
+
+<section class="s" id="sobre"><div class="w two">
+<div class="rv"><h2>O que é a <span class="hl">oficina</span></h2>
+<p class="sub" style="margin-bottom:14px">Oito semanas para aprender a criar personagens com personalidade, do primeiro rabisco ao nanquim final. Você não precisa saber desenhar: a gente começa do zero e vai junto.</p>
+<p class="sub" style="margin:0">Aulas ao vivo, correção individual e uma turma que vira comunidade.</p></div>
+<div class="st"><div class="mc"><b>8</b><span>Semanas</span></div><div class="mc"><b>24</b><span>Aulas práticas</span></div><div class="mc"><b>30</b><span>Vagas por turma</span></div><div class="mc"><b>100%</b><span>Mão na massa</span></div></div>
+</div></section>
+
+<section class="s ink" id="programa"><div class="w"><h2>O <span class="hl">programa</span></h2><p class="sub">Quatro módulos que te levam do básico ao seu primeiro personagem completo.</p>
+<div class="grid">
+<div class="mc"><span class="n">01</span><h3>Anatomia e proporções</h3><p>Rosto, corpo e o famoso estilo anime, passo a passo.</p><span class="jp">体</span></div>
+<div class="mc"><span class="n">02</span><h3>Olhos e emoções</h3><p>O segredo de um olhar que conta uma história inteira.</p><span class="jp">目</span></div>
+<div class="mc"><span class="n">03</span><h3>Cabelo, roupas e silhueta</h3><p>Visual marcante que o público reconhece de longe.</p><span class="jp">髪</span></div>
+<div class="mc"><span class="n">04</span><h3>Do rascunho ao nanquim</h3><p>Arte-final, sombras e uma página de mangá completa.</p><span class="jp">墨</span></div>
+</div></div></section>
+
+<section class="s" id="mestres"><div class="w"><h2>Os <span class="hl">mestres</span></h2><p class="sub">Quem vai desenhar junto com você, de verdade.</p>
+<div class="grid">
+<div class="mc"><div class="av">先</div><h3>Ana Souza</h3><p>Anatomia e design de personagens<br>☕ Vive de café coado</p></div>
+<div class="mc"><div class="av">師</div><h3>Rafael Lima</h3><p>Cenários e perspectiva<br>🎸 Toca violão nas pausas</p></div>
+<div class="mc"><div class="av">墨</div><h3>Marina Costa</h3><p>Nanquim e cor<br>📚 Um mangá por semana</p></div>
+<div class="mc"><div class="av">話</div><h3>Lucas Prado</h3><p>Roteiro e narrativa<br>🍜 Especialista em lámen</p></div>
+</div></div></section>
+
+<section class="s ink" id="duvidas"><div class="w"><h2>Ficou com <span class="hl">dúvida?</span></h2><p class="sub">As perguntas que mais recebemos.</p>
+<div class="faq">
+<details><summary>Preciso saber desenhar?</summary><p>De jeito nenhum! O curso começa do zero, com formas simples e muita prática guiada.</p></details>
+<details><summary>Quais materiais vou precisar?</summary><p>Lápis 2B, borracha, canetas nanquim e papel A4. Também pode usar tablet, se preferir.</p></details>
+<details><summary>É online ou presencial?</summary><p>Híbrido: aulas ao vivo online e encontros presenciais mensais em Brasília.</p></details>
+<details><summary>Tem certificado?</summary><p>Sim, certificado de conclusão e um portfólio digital com os seus trabalhos.</p></details>
+</div></div></section>
+
+<section class="s" id="inscricao"><div class="w tk">
+<div class="tc rv"><p style="font-weight:800;letter-spacing:.15em;font-size:.75rem">TURMA 07 · INÍCIO 02/11</p><h3>Garanta a sua vaga</h3><p>18 de 30 vagas já preenchidas. Corre!</p><div class="bar" id="bar"><i></i></div></div>
+<div class="rv"><h2>Inscrição</h2><p class="sub" style="margin-bottom:22px">Preencha e a gente entra em contato em até 24 horas.</p>
+<form id="f"><input required placeholder="Seu nome"><input required type="email" placeholder="Seu e-mail"><select><option>Nunca desenhei</option><option>Já desenho um pouco</option><option>Intermediário</option></select><button class="btn" type="submit">Garantir minha vaga</button><p id="ok">🎉 Inscrição recebida! ありがとう!</p></form></div>
+</div></section>
+</main>
+<footer><div class="w"><span>© 2026 Kokoro · Oficina de Personagens Anime</span><span>Feito com ♥ e nanquim · こころ</span></div></footer>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},A=function(s){return [].slice.call(document.querySelectorAll(s))};
+var t=['漫画','MANGÁ','NANQUIM','アニメ','PERSONAGENS','物語','OLHARES','表情'],h='';for(var k=0;k<4;k++)t.forEach(function(x){h+='<span>'+x+' ✦</span>'});$('#mq').innerHTML=h;
+var pu=A('.pup'),mx=0,my=0,cx=0,cy=0;
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+(function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;pu.forEach(function(p){p.style.transform='translate('+(cx*14)+'px,'+(cy*10)+'px)'});requestAnimationFrame(l)})();
+A('section.s :is(h2,.sub,.mc,details,.tc)').forEach(function(el){if(el.closest('.rv'))return;el.classList.add('rv');var i=[].indexOf.call(el.parentNode.children,el);el.style.transitionDelay=(i%4*90)+'ms'});
+function count(b){var s=b.textContent,n=parseInt(s),u=s.replace(/[0-9]/g,''),st=performance.now();(function f(now){var q=Math.min((now-st)/1300,1);b.textContent=Math.round(n*(1-Math.pow(1-q,3)))+u;if(q<1)requestAnimationFrame(f)})(st)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var b=e.target.querySelector('.st b,b');if(e.target.parentNode.classList.contains('st')&&e.target.querySelector('b'))count(e.target.querySelector('b'));if(e.target.classList.contains('tc'))$('#bar').classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+A('.rv').forEach(function(el){io.observe(el)});
+var L=A('nav ul a'),so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)L.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')=='#'+e.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
+A('main section[id]').forEach(function(x){so.observe(x)});
+$('#f').addEventListener('submit',function(e){e.preventDefault();$('#ok').style.display='block';this.reset()});
+})();
+</script>
+</body>
+</html>
